@@ -7,6 +7,81 @@
 <body>
   <script>
 
+    function playRound (player, comp) {
+        player = normalizeInput(player);
+        let results = "";
+        switch(player) {
+          case "Rock":
+            if (comp == "Rock") {results = "Draw!";}
+            else if (comp == "Paper") {results = "You lose! Paper beats rock.";}
+            else {results = "You win! Rock beats scissors.";}
+            break;
+          case "Paper":
+            if (comp == "Paper") {results = "Draw!";}
+            else if (comp == "Scissors") {results = "You lose! Scissors beats paper.";}
+            else {results = "You win! Paper beats scissors.";}
+            break;
+          case "Scissors":
+            if (comp == "Scissors") {results = "Draw!";}
+            else if (comp == "Rock") {results = "You lose! Rock beats scissors.";}
+            else {results = "You win! Scissors beats paper.";}
+            break;
+          default:
+            results = "Error";
+        }
+        return results;
+    }
+
+    function computerPlay() {
+      let a = "";
+      switch(getRandomInt(3)) {
+        case 0:
+          a = "Rock";
+          break;
+        case 1:
+          a = "Paper";
+          break;
+        case 2:
+          a = "Scissors";
+          break;
+        }
+      return a;
+    }
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    function normalizeInput(string) {
+      if (string != "") {
+        string = string.toLowerCase();
+        let letter = (string.slice(0,1)).toUpperCase();
+        string = string.slice(1, string.length)
+        return letter.concat(string);
+      }
+      else {return;}
+    }
+
+    function game() {
+      let a = 0;
+      let results = "";
+      console.log("Let's play five rounds of Rock, Paper Scissors!");
+      for (a = 0; a < 5; a++) {
+        results = playRound(window.prompt("Choose Rock, Paper, or Scissors", ""), computerPlay());
+        if (results == "Error") {
+          console.log("Invalid entry, try again.");
+          a--;
+        }
+        else {
+          console.log(results);
+        }
+      }
+    }
+
+    game();
+
+
+
   </script>
 </body>
 </html>
