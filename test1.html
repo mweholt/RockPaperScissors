@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript Tests</title>
+</head>
+
+<body>
+  <script>
+    console.log("Testing add 7: 0 + 7 = ", add7(0));
+    console.log("Testing multiply: 5 * 5 = ", multiply(5,5));
+    console.log("Testing capitalize: doggo = ", capitalize("doggo"));
+    console.log("Testing lastletter: doggo = ", lastLetter("doggo"));
+
+    function add7 (number) {
+      return number + 7;
+    }
+
+    function multiply(number1, number2) {
+      return number1 * number2;
+    }
+
+    function capitalize(word) {
+      if (word.charAt(0) == word.charAt(0).toUpperCase()) {
+        return word;
+      }
+      else {
+        let letter = word.slice(0,1);
+        word = word.slice(1, word.length)
+        return (letter.toUpperCase()).concat(word);
+      }
+    }
+
+    function lastLetter(word) {
+      word = word.charAt(--word.length)
+      return word;
+    }
+  </script>
+</body>
+</html>
